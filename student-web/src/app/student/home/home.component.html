@@ -1,0 +1,72 @@
+<div class="container" style="width: 778px;margin:20px 0px 0px 10px">
+    <br>
+    <h3 style="text-align: center;color: rgb(27, 150, 109);">Full stack with Angular and node and mongoDb</h3>
+    <mat-form-field style="width: 175px;">
+        <input matInput [(ngModel)]="student.name" placeholder="Enter name " type="text">
+        <mat-icon fontIcon="person" matSuffix></mat-icon>
+    </mat-form-field>
+    <mat-form-field style="width: 175px;margin-left: 15px;">
+        <input matInput [(ngModel)]="student.email"  placeholder="Enter email " type="text">
+        <mat-icon fontIcon="email" matSuffix></mat-icon>
+    </mat-form-field>
+    <mat-form-field style="width: 175px;margin-left: 15px;">
+        <input matInput [(ngModel)]="student.gender" placeholder="Enter gender " type="text">
+        <mat-icon fontIcon="gender" matSuffix></mat-icon>
+    </mat-form-field>
+    
+    <button mat-flat-button (click)="addorUpdateStudent(student)" style="margin-left: 25px;">Submit</button>
+    <button mat-flat-button color="warn" style="margin-left: 10px;">Cancel</button>
+    <br>
+    <mat-form-field style="width: 215px;">
+        <input matInput  (input)="searchStudents(filter.value)" placeholder="Search" type="text" #filter>
+        <mat-icon fontIcon="search" matSuffix></mat-icon>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="studentId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> StudentId. </th>
+          <td mat-cell *matCellDef="let student"> {{student.studentId}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let student"> {{student.name}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let student"> {{student.email}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+          <td mat-cell *matCellDef="let student"> {{student.gender}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
+          <td mat-cell *matCellDef="let student">
+            <button (click)="populateFormFields(student)" style="height: 27px;" mat-flat-button>Edit</button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
+          <td mat-cell *matCellDef="let student">
+            <button (click)="deleteStudent(student.studentId)" style="height: 27px;background-color:#c47676" mat-flat-button>Delete</button>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let student; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>
+
