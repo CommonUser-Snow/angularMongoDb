@@ -69,6 +69,7 @@ export class HomeComponent implements AfterViewInit{
     }
   }
 
+  // edit button
   populateFormFields(student:Student){
     this.student.studentId = student.studentId;
     this.student.name = student.name;
