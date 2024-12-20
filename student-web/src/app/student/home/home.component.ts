@@ -89,6 +89,6 @@ export class HomeComponent implements AfterViewInit{
   }
 
   // validTesting{
-
+      //testing;
   // }
 }
