@@ -77,7 +77,7 @@ export class HomeComponent implements AfterViewInit{
     this.student.gender = student.gender;
   }
 
-  // delete button
+  
   deleteStudent(id:Number){
     const isConfirmed=window.confirm("Are you sure you wnat to delete");
     if(isConfirmed){
